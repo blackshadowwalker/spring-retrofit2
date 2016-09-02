@@ -41,7 +41,7 @@ public class Server {
                         requestURI = requestURI.substring(0, idx);
                     }
 
-                    if ("GET".equalsIgnoreCase(req.getMethod()) && "/api/users".equals(requestURI)) {
+                    if ("GET".equalsIgnoreCase(req.getMethod()) && requestURI.startsWith("/api/users")) {
                         String _pageNum = param.get("pageNum");
                         String _pageSize = param.get("pageSize");
                         Assert.notNull(_pageNum);
@@ -55,7 +55,12 @@ public class Server {
                         page.setPageNum(pageNum);
                         page.setPageSize(pageSize);
                         page.setResult(users);
-                        String body = JSON.toJSONString(new ResponseDto<Page<List<User>>>(page));
+                        String body = null;
+                        if (requestURI.equals("/api/users")) {
+                            body = JSON.toJSONString(new ResponseDto<Page<List<User>>>(page));
+                        } else {
+                            body = JSON.toJSONString(page);
+                        }
                         return new MockResponse().setResponseCode(200).setBody(body);
 
                     } else if ("GET".equalsIgnoreCase(req.getMethod()) && "/api/hello".equals(requestURI)) {

@@ -19,4 +19,10 @@ public interface MyRpcService {
     @GET("/api/users")
     Call<ResponseDto<Page<List<User>>>> queryUserList(@Query("pageSize") Integer pageSize, @Query("pageNum") Integer pageNum);
 
+    @GET("/api/users")
+    ResponseDto<Page<List<User>>> queryUserList2(@Query("pageSize") Integer pageSize, @Query("pageNum") Integer pageNum);
+
+    @GET("/api/users/page")
+    Page<List<User>> queryUserList3(@Query("pageSize") Integer pageSize, @Query("pageNum") Integer pageNum);
+
 }

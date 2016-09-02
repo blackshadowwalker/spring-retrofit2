@@ -3,6 +3,7 @@ package com.black.spring.retrofit.interceptor;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,9 @@ public class LogInterceptor implements Interceptor {
         Request req = chain.request();
         log.info("request {} - {}", req.method(), req.url().url());
         Response resp = chain.proceed(req);
-        log.info("recevied response");
-        return resp;
+        String body = resp.body().string();
+        log.info("response : {}", body);
+        Response newRsp = resp.newBuilder().body(ResponseBody.create(resp.body().contentType(), body)).build();
+        return newRsp;
     }
 }

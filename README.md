@@ -19,7 +19,7 @@ maven
 </dependency>
 ```
 
-config
+Config
 
 ```java
 @Configuration
@@ -34,6 +34,15 @@ public class RetrofitConfig {
         return configurer;
     }
 
+}
+```
+
+Define annotations at retrofit service
+
+```java
+@RetrofitService
+public interface MyRpcService {
+    ...
 }
 ```
 

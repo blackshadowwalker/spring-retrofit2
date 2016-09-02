@@ -61,6 +61,29 @@ public class SpringRetrofit2Test {
     }
 
     @Test
+    public void testResponseDtoCallAdapter() {
+        ResponseDto<Page<List<User>>> resp = myRpcService.queryUserList2(10, 1);
+        Assert.assertNotNull(resp);
+        Assert.assertEquals(resp.getMsg(), 200, resp.getCode());
+        Assert.assertNotNull(resp.getData());
+        Assert.assertNotNull(resp.getData().getResult());
+        List<User> userList = resp.getData().getResult();
+        Assert.assertEquals(2, userList.size());
+        Assert.assertEquals(1L, userList.get(0).getId().longValue());
+        Assert.assertEquals(2L, userList.get(1).getId().longValue());
+    }
+
+    @Test
+    public void testAnyCallAdapter() {
+        Page<List<User>> page = myRpcService.queryUserList3(10, 1);
+        List<User> userList = page.getResult();
+        Assert.assertNotNull(userList);
+        Assert.assertEquals(2, userList.size());
+        Assert.assertEquals(1L, userList.get(0).getId().longValue());
+        Assert.assertEquals(2L, userList.get(1).getId().longValue());
+    }
+
+    @Test
     public void testRetrofitRpc2Call() throws Exception {
         Response<ResponseDto<String>> response = myRpc2Service.hello("world").execute();
         Assert.assertTrue(response.message(), response.isSuccessful());
