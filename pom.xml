@@ -8,6 +8,9 @@
     <artifactId>spring-retrofit2</artifactId>
     <version>2.1.0</version>
 
+    <url>https://github.com/blackshadowwalker/spring-retrofit2</url>
+    <description>Spring manage retrofit service.</description>
+
     <scm>
         <connection>
             scm:git:https://github.com/blackshadowwalker/spring-retrofit2.git
@@ -96,6 +99,33 @@
                         <goals>
                             <goal>jar</goal>
                             <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
