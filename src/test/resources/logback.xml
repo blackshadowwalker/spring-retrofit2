@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <property name="logPrefix" value="testcase" />
+    <property name="logSuffix" value=".gz" />
+
+    <property name="log_dir" value="logs/" />
+    <property name="maxHistory" value="6"/>
+
+    <property name="logFormat"  value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread] [%M\\(%F:%L\\)] %msg%n"/>
+    <property name="dailyDateFormat" value="%d{yyyy-MM-dd}"/>
+    <property name="prudent" value="false" />
+
+    <timestamp key="byDay" datePattern="yyyy-MM-dd"/>
+    <timestamp key="byMinute" datePattern="yyyy-MM-dd'T'HHmm"/>
+    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+
+    <!-- ConsoleAppender 控制台输出日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <!-- 对日志进行格式化 -->
+        <encoder>
+            <pattern>${logFormat}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
