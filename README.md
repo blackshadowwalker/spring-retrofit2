@@ -15,7 +15,7 @@ maven
 <dependency>
     <groupId>com.black.spring</groupId>
     <artifactId>spring-retrofit2</artifactId>
-    <version>2.10.</version>
+    <version>2.1.0</version>
 </dependency>
 ```
 
