@@ -41,7 +41,7 @@ public class RetrofitConfig {
 
 #### S1: Define Multi Retrofit
 
-```
+```java
 @Bean
 public Retrofit retrofitDefault(OkHttpClient okHttpClient) {
     return new Retrofit.Builder()
@@ -63,13 +63,12 @@ public Retrofit retrofit8082(OkHttpClient okHttpClient) {
 
 #### S2: Define annotations at retrofit service
 
-```
+```java
 @RetrofitService(retrofit = "retrofit8082")
 public interface MyRpcService {
     ...
 }
 ```
-
 
 ## More
 
