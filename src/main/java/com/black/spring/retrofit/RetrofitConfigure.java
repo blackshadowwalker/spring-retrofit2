@@ -8,7 +8,7 @@ import org.springframework.context.annotation.*;
  */
 @Configuration
 @ComponentScan(basePackages = {
-        "com.mljr.hr.retrofit"
+        "com.black.spring.retrofit"
 })
 public class RetrofitConfigure {
 
