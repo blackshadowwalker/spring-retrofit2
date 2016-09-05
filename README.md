@@ -29,7 +29,7 @@ public class RetrofitConfig {
     @Bean
     public RetrofitServiceScannerConfigurer config(Retrofit retrofit) {
         RetrofitServiceScannerConfigurer configurer = new RetrofitServiceScannerConfigurer();
-        configurer.setBasePackage("com.black.spring.retrofit.service");
+        configurer.setBasePackage(com.github.blackshadowwalker.spring.retrofit.serviceg.retrofit.service");
         configurer.setRetrofit(retrofit);
         return configurer;
     }
