@@ -8,6 +8,7 @@ import com.github.blackshadowwalker.spring.retrofit.factory.CustomCallAdapterFac
 import com.github.blackshadowwalker.spring.retrofit.interceptor.LogInterceptor;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
@@ -33,9 +34,9 @@ public class RetrofitConfig {
     }
 
     @Bean
-    public Retrofit retrofitDefault(OkHttpClient okHttpClient, CustomCallAdapterFactory respCall, AnyTypeCallAdapterFactory anyTypeCall) {
+    public Retrofit retrofitDefault(@Value("${rpc.server}")String defaultBaseUrl, OkHttpClient okHttpClient, CustomCallAdapterFactory respCall, AnyTypeCallAdapterFactory anyTypeCall) {
         return new Retrofit.Builder()
-                .baseUrl("http://127.0.0.1:8081")
+                .baseUrl(defaultBaseUrl)
                 .addConverterFactory(FastJsonConverterFactory.create())
                 .addCallAdapterFactory(respCall)
                 .addCallAdapterFactory(anyTypeCall)
@@ -46,7 +47,7 @@ public class RetrofitConfig {
     @Bean
     public Retrofit retrofit8082(OkHttpClient okHttpClient, CustomCallAdapterFactory respCall, AnyTypeCallAdapterFactory anyTypeCall) {
         return new Retrofit.Builder()
-                .baseUrl("http://127.0.0.1:8082")
+                .baseUrl("http://127.0.0.1:8081")
                 .addConverterFactory(FastJsonConverterFactory.create())
                 .addCallAdapterFactory(respCall)
                 .addCallAdapterFactory(anyTypeCall)
@@ -65,10 +66,10 @@ public class RetrofitConfig {
     }
 
     @Bean
-    public RetrofitServiceScannerConfigurer retrofitServiceScannerConfigurer(@Qualifier("retrofitDefault") Retrofit defaultRetrofit) {
+    public RetrofitServiceScannerConfigurer retrofitServiceScannerConfigurer() {
         RetrofitServiceScannerConfigurer configurer = new RetrofitServiceScannerConfigurer();
         configurer.setBasePackage("com.github.blackshadowwalker.spring.retrofit");
-        configurer.setRetrofit(defaultRetrofit);
+        configurer.setRetrofit("retrofitDefault");
         return configurer;
     }
 }

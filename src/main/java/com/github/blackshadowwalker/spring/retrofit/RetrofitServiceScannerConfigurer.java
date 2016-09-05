@@ -18,7 +18,7 @@ import static org.springframework.util.Assert.notNull;
 public class RetrofitServiceScannerConfigurer implements BeanDefinitionRegistryPostProcessor, InitializingBean {
 
     private String basePackage;
-    private Retrofit retrofit;
+    private String retrofit;
 
     private Class<? extends Annotation> annotationClass = RetrofitService.class;//for Filter
     private Class<?> markerInterface;//for Filter
@@ -27,7 +27,7 @@ public class RetrofitServiceScannerConfigurer implements BeanDefinitionRegistryP
         this.basePackage = basePackage;
     }
 
-    public void setRetrofit(Retrofit retrofit) {
+    public void setRetrofit(String retrofit) {
         this.retrofit = retrofit;
     }
 

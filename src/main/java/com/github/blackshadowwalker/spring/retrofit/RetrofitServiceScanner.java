@@ -26,7 +26,7 @@ public class RetrofitServiceScanner extends ClassPathBeanDefinitionScanner {
     private Class<? extends Annotation> annotationClass;//for Filter
     private Class<?> markerInterface;
 
-    private Retrofit retrofit;
+    private String retrofit;
 
     public RetrofitServiceScanner(BeanDefinitionRegistry registry) {
         super(registry, false);
@@ -63,7 +63,7 @@ public class RetrofitServiceScanner extends ClassPathBeanDefinitionScanner {
 
             String retrofitName = annotationAttributes.getString("retrofit");
             if (retrofitName == null || retrofitName.isEmpty()){
-                definition.getPropertyValues().add("retrofit", retrofit);//default retrofit
+                definition.getPropertyValues().add("retrofit", new RuntimeBeanReference(retrofit));//default retrofit
             } else {
                 definition.getPropertyValues().add("retrofit", new RuntimeBeanReference(retrofitName));
             }
@@ -90,7 +90,7 @@ public class RetrofitServiceScanner extends ClassPathBeanDefinitionScanner {
         this.retrofitServiceFactoryBean = retrofitServiceFactoryBean;
     }
 
-    public void setRetrofit(Retrofit retrofit) {
+    public void setRetrofit(String retrofit) {
         this.retrofit = retrofit;
     }
 
