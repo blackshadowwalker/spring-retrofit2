@@ -1,6 +1,6 @@
 # spring-retrofit
 
-![Version](https://img.shields.io/badge/Version-0.0.1-blue.svg)
+![Version](https://img.shields.io/badge/Version-2.1.0-blue.svg)
 
 ![jdk    ](https://img.shields.io/badge/Jdk-1.7+-blue.svg)
 
