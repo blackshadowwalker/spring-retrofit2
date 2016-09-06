@@ -13,14 +13,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @Author : BlackShadowWalker
- * @Date : 2016-09-02
+ * Author : BlackShadowWalker
+ * Date   : 2016-09-02
  */
 public class AnyTypeCallAdapterFactory extends CallAdapter.Factory {
 
-    Set<Class<?>> exclude = new HashSet<>();
+    Set<Class<?>> exclude = new HashSet<Class<?>>();
 
-    AnyTypeCallAdapterFactory() {
+    public AnyTypeCallAdapterFactory() {
         exclude.add(Call.class);
     }
 
