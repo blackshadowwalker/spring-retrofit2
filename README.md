@@ -13,7 +13,7 @@
 maven
 ```xml
 <dependency>
-    <groupId>com.black.spring</groupId>
+    <groupId>com.github.blackshadowwalker.spring</groupId>
     <artifactId>spring-retrofit2</artifactId>
     <version>2.1.0</version>
 </dependency>
