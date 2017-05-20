@@ -14,7 +14,7 @@ import static com.google.gson.internal.$Gson$Types.getRawType;
 /**
  * Created by hoopa on 2017/5/20.
  */
-public class StringConvertFactory extends Converter.Factory  {
+public class StringConvertFactory extends Converter.Factory {
 
     public static StringConvertFactory create() {
         StringConvertFactory f = new StringConvertFactory();
